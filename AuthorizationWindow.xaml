@@ -1,0 +1,43 @@
+﻿<Window x:Class="ShoeStore_Бихе.AuthorizationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShoeStore_Бихе"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="2" Background="LawnGreen"/>
+        <TextBlock Text="Авторизация" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" FontSize="40"/>
+        <Image Source="C:\Всё\4 курс\Рпитм 4 курс\ShoeStore_Бихе\Picture\Icon.png" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"/>
+        <TextBlock Text="Логин" Grid.Column="1" Grid.Row="3" FontSize="25"/>
+        <TextBox x:Name="TBLogin" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <TextBlock Text="Пароль" Grid.Column="1" Grid.Row="5" FontSize="25"/>
+        <PasswordBox x:Name="PBPass" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button x:Name="BtnVhod" Content="Войти" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Click="BtnVhod_Click"/>
+        <Button x:Name="BtnVhodgost" Content="Войти как гость" Grid.Column="1" Margin="8" Grid.ColumnSpan="2" Grid.Row="10" Click="BtnVhodgost_Click"/>
+       
+
+    </Grid>
+</Window>

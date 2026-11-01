@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aca3b55d355d48ac8b84eaf866884b0d" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="ShoeStore__БихеModel.Adress_Pynkta_vidachi" Width="1.5" PointX="0.75" PointY="3.375" />
+        <EntityTypeShape EntityType="ShoeStore__БихеModel.Kategory" Width="1.5" PointX="1.5" PointY="13.375" />
+        <EntityTypeShape EntityType="ShoeStore__БихеModel.Postavshik" Width="1.5" PointX="1.5" PointY="15.75" />
+        <EntityTypeShape EntityType="ShoeStore__БихеModel.Proizvod" Width="1.5" PointX="1.5" PointY="18.125" />
+        <EntityTypeShape EntityType="ShoeStore__БихеModel.Pynkti" Width="1.5" PointX="3" PointY="3.125" />
+        <EntityTypeShape EntityType="ShoeStore__БихеModel.Role" Width="1.5" PointX="1.5" PointY="21.125" />
+        <EntityTypeShape EntityType="ShoeStore__БихеModel.Sostav_zakaza" Width="1.5" PointX="3.75" PointY="9.375" />
+        <EntityTypeShape EntityType="ShoeStore__БихеModel.Status" Width="1.5" PointX="3.75" PointY="14.375" />
+        <EntityTypeShape EntityType="ShoeStore__БихеModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ShoeStore__БихеModel.Tovar" Width="1.5" PointX="1.5" PointY="8.625" />
+        <EntityTypeShape EntityType="ShoeStore__БихеModel.User" Width="1.5" PointX="3.75" PointY="20.75" />
+        <EntityTypeShape EntityType="ShoeStore__БихеModel.Zakaz" Width="1.5" PointX="6" PointY="2.625" />
+        <AssociationConnector Association="ShoeStore__БихеModel.FK_Pynkti_Adress_Pynkta_vidachi" />
+        <AssociationConnector Association="ShoeStore__БихеModel.FK_Zakaz_Adress_Pynkta_vidachi" />
+        <AssociationConnector Association="ShoeStore__БихеModel.FK_Tovar_Kategory" />
+        <AssociationConnector Association="ShoeStore__БихеModel.FK_Tovar_Postavshik" />
+        <AssociationConnector Association="ShoeStore__БихеModel.FK_Tovar_Proizvod" />
+        <AssociationConnector Association="ShoeStore__БихеModel.FK_User_Role" />
+        <AssociationConnector Association="ShoeStore__БихеModel.FK_SostavZakaza_Tovar" />
+        <AssociationConnector Association="ShoeStore__БихеModel.FK_Zakaz_Sostav_zakaza" />
+        <AssociationConnector Association="ShoeStore__БихеModel.FK_Zakaz_Status" />
+        <AssociationConnector Association="ShoeStore__БихеModel.FK_Zakaz_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

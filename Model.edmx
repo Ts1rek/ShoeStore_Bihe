@@ -1,0 +1,754 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище ShoeStore__БихеModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adress Pynkta vidachi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Adress Pynkta vidachi" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Kategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Kategory" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Postavshik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Postavshik" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Proizvod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Proizvod" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Pynkti">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NomerPynkta" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gorod" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adress Pynkta vidachiId" Type="int" Nullable="false" />
+          <Property Name="NomerZakaza" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Sostav zakaza">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nimer zakaza" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArticylZakaza" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nomer" Type="nvarchar" MaxLength="50" />
+          <Property Name="TovarId" Type="int" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tovar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TovarName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EdinichIzmeren" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="money" />
+          <Property Name="PostavshikId" Type="int" Nullable="false" />
+          <Property Name="ProizvodId" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="Skidka" Type="int" Nullable="false" />
+          <Property Name="CountSklade" Type="int" Nullable="false" />
+          <Property Name="OpisTovar" Type="nvarchar" MaxLength="250" />
+          <Property Name="Picture" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Zakaz">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sostav zakazaId" Type="int" Nullable="false" />
+          <Property Name="Date zakaz" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date dostavca" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adress pyncta vidachiId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Pynkti_Adress Pynkta vidachi">
+          <End Role="Adress Pynkta vidachi" Type="Self.Adress Pynkta vidachi" Multiplicity="1" />
+          <End Role="Pynkti" Type="Self.Pynkti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress Pynkta vidachi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pynkti">
+              <PropertyRef Name="Adress Pynkta vidachiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SostavZakaza_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="0..1" />
+          <End Role="Sostav zakaza" Type="Self.Sostav zakaza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sostav zakaza">
+              <PropertyRef Name="TovarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tovar_Kategory">
+          <End Role="Kategory" Type="Self.Kategory" Multiplicity="1" />
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tovar_Postavshik">
+          <End Role="Postavshik" Type="Self.Postavshik" Multiplicity="1" />
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavshik">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="PostavshikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tovar_Proizvod">
+          <End Role="Proizvod" Type="Self.Proizvod" Multiplicity="1" />
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="ProizvodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_Adress Pynkta vidachi">
+          <End Role="Adress Pynkta vidachi" Type="Self.Adress Pynkta vidachi" Multiplicity="1" />
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress Pynkta vidachi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Zakaz">
+              <PropertyRef Name="Adress pyncta vidachiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_Sostav zakaza">
+          <End Role="Sostav zakaza" Type="Self.Sostav zakaza" Multiplicity="1" />
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sostav zakaza">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Zakaz">
+              <PropertyRef Name="Sostav zakazaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Zakaz">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Zakaz">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ShoeStore__БихеModelContainer">
+          <EntitySet Name="Adress Pynkta vidachi" EntityType="Self.Adress Pynkta vidachi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategory" EntityType="Self.Kategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Postavshik" EntityType="Self.Postavshik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proizvod" EntityType="Self.Proizvod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pynkti" EntityType="Self.Pynkti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sostav zakaza" EntityType="Self.Sostav zakaza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tovar" EntityType="Self.Tovar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zakaz" EntityType="Self.Zakaz" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Pynkti_Adress Pynkta vidachi" Association="Self.FK_Pynkti_Adress Pynkta vidachi">
+            <End Role="Adress Pynkta vidachi" EntitySet="Adress Pynkta vidachi" />
+            <End Role="Pynkti" EntitySet="Pynkti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SostavZakaza_Tovar" Association="Self.FK_SostavZakaza_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Sostav zakaza" EntitySet="Sostav zakaza" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tovar_Kategory" Association="Self.FK_Tovar_Kategory">
+            <End Role="Kategory" EntitySet="Kategory" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tovar_Postavshik" Association="Self.FK_Tovar_Postavshik">
+            <End Role="Postavshik" EntitySet="Postavshik" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tovar_Proizvod" Association="Self.FK_Tovar_Proizvod">
+            <End Role="Proizvod" EntitySet="Proizvod" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Adress Pynkta vidachi" Association="Self.FK_Zakaz_Adress Pynkta vidachi">
+            <End Role="Adress Pynkta vidachi" EntitySet="Adress Pynkta vidachi" />
+            <End Role="Zakaz" EntitySet="Zakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Sostav zakaza" Association="Self.FK_Zakaz_Sostav zakaza">
+            <End Role="Sostav zakaza" EntitySet="Sostav zakaza" />
+            <End Role="Zakaz" EntitySet="Zakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Status" Association="Self.FK_Zakaz_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Zakaz" EntitySet="Zakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_User" Association="Self.FK_Zakaz_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Zakaz" EntitySet="Zakaz" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ShoeStore__БихеModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ShoeStore_БихеEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adress_Pynkta_vidachi" EntityType="ShoeStore__БихеModel.Adress_Pynkta_vidachi" />
+          <EntitySet Name="Kategory" EntityType="ShoeStore__БихеModel.Kategory" />
+          <EntitySet Name="Postavshik" EntityType="ShoeStore__БихеModel.Postavshik" />
+          <EntitySet Name="Proizvod" EntityType="ShoeStore__БихеModel.Proizvod" />
+          <EntitySet Name="Pynkti" EntityType="ShoeStore__БихеModel.Pynkti" />
+          <EntitySet Name="Role" EntityType="ShoeStore__БихеModel.Role" />
+          <EntitySet Name="Sostav_zakaza" EntityType="ShoeStore__БихеModel.Sostav_zakaza" />
+          <EntitySet Name="Status" EntityType="ShoeStore__БихеModel.Status" />
+          <EntitySet Name="sysdiagrams" EntityType="ShoeStore__БихеModel.sysdiagrams" />
+          <EntitySet Name="Tovar" EntityType="ShoeStore__БихеModel.Tovar" />
+          <EntitySet Name="User" EntityType="ShoeStore__БихеModel.User" />
+          <EntitySet Name="Zakaz" EntityType="ShoeStore__БихеModel.Zakaz" />
+          <AssociationSet Name="FK_Pynkti_Adress_Pynkta_vidachi" Association="ShoeStore__БихеModel.FK_Pynkti_Adress_Pynkta_vidachi">
+            <End Role="Adress_Pynkta_vidachi" EntitySet="Adress_Pynkta_vidachi" />
+            <End Role="Pynkti" EntitySet="Pynkti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Adress_Pynkta_vidachi" Association="ShoeStore__БихеModel.FK_Zakaz_Adress_Pynkta_vidachi">
+            <End Role="Adress_Pynkta_vidachi" EntitySet="Adress_Pynkta_vidachi" />
+            <End Role="Zakaz" EntitySet="Zakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tovar_Kategory" Association="ShoeStore__БихеModel.FK_Tovar_Kategory">
+            <End Role="Kategory" EntitySet="Kategory" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tovar_Postavshik" Association="ShoeStore__БихеModel.FK_Tovar_Postavshik">
+            <End Role="Postavshik" EntitySet="Postavshik" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tovar_Proizvod" Association="ShoeStore__БихеModel.FK_Tovar_Proizvod">
+            <End Role="Proizvod" EntitySet="Proizvod" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="ShoeStore__БихеModel.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SostavZakaza_Tovar" Association="ShoeStore__БихеModel.FK_SostavZakaza_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Sostav_zakaza" EntitySet="Sostav_zakaza" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Sostav_zakaza" Association="ShoeStore__БихеModel.FK_Zakaz_Sostav_zakaza">
+            <End Role="Sostav_zakaza" EntitySet="Sostav_zakaza" />
+            <End Role="Zakaz" EntitySet="Zakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Status" Association="ShoeStore__БихеModel.FK_Zakaz_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Zakaz" EntitySet="Zakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_User" Association="ShoeStore__БихеModel.FK_Zakaz_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Zakaz" EntitySet="Zakaz" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Adress_Pynkta_vidachi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Adress_Pynkta_vidachi1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pynkti" Relationship="ShoeStore__БихеModel.FK_Pynkti_Adress_Pynkta_vidachi" FromRole="Adress_Pynkta_vidachi" ToRole="Pynkti" />
+          <NavigationProperty Name="Zakaz" Relationship="ShoeStore__БихеModel.FK_Zakaz_Adress_Pynkta_vidachi" FromRole="Adress_Pynkta_vidachi" ToRole="Zakaz" />
+        </EntityType>
+        <EntityType Name="Kategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Kategory1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tovar" Relationship="ShoeStore__БихеModel.FK_Tovar_Kategory" FromRole="Kategory" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="Postavshik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Postavshik1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tovar" Relationship="ShoeStore__БихеModel.FK_Tovar_Postavshik" FromRole="Postavshik" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="Proizvod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Proizvod1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tovar" Relationship="ShoeStore__БихеModel.FK_Tovar_Proizvod" FromRole="Proizvod" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="Pynkti">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NomerPynkta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gorod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adress_Pynkta_vidachiId" Type="Int32" Nullable="false" />
+          <Property Name="NomerZakaza" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Adress_Pynkta_vidachi" Relationship="ShoeStore__БихеModel.FK_Pynkti_Adress_Pynkta_vidachi" FromRole="Pynkti" ToRole="Adress_Pynkta_vidachi" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="ShoeStore__БихеModel.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Sostav_zakaza">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nimer_zakaza" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArticylZakaza" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nomer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TovarId" Type="Int32" />
+          <NavigationProperty Name="Tovar" Relationship="ShoeStore__БихеModel.FK_SostavZakaza_Tovar" FromRole="Sostav_zakaza" ToRole="Tovar" />
+          <NavigationProperty Name="Zakaz" Relationship="ShoeStore__БихеModel.FK_Zakaz_Sostav_zakaza" FromRole="Sostav_zakaza" ToRole="Zakaz" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Status1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Zakaz" Relationship="ShoeStore__БихеModel.FK_Zakaz_Status" FromRole="Status" ToRole="Zakaz" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tovar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TovarName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EdinichIzmeren" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PostavshikId" Type="Int32" Nullable="false" />
+          <Property Name="ProizvodId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Skidka" Type="Int32" Nullable="false" />
+          <Property Name="CountSklade" Type="Int32" Nullable="false" />
+          <Property Name="OpisTovar" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Picture" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Kategory" Relationship="ShoeStore__БихеModel.FK_Tovar_Kategory" FromRole="Tovar" ToRole="Kategory" />
+          <NavigationProperty Name="Postavshik" Relationship="ShoeStore__БихеModel.FK_Tovar_Postavshik" FromRole="Tovar" ToRole="Postavshik" />
+          <NavigationProperty Name="Proizvod" Relationship="ShoeStore__БихеModel.FK_Tovar_Proizvod" FromRole="Tovar" ToRole="Proizvod" />
+          <NavigationProperty Name="Sostav_zakaza" Relationship="ShoeStore__БихеModel.FK_SostavZakaza_Tovar" FromRole="Tovar" ToRole="Sostav_zakaza" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Role" Relationship="ShoeStore__БихеModel.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Zakaz" Relationship="ShoeStore__БихеModel.FK_Zakaz_User" FromRole="User" ToRole="Zakaz" />
+        </EntityType>
+        <EntityType Name="Zakaz">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sostav_zakazaId" Type="Int32" Nullable="false" />
+          <Property Name="Date_zakaz" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_dostavca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adress_pyncta_vidachiId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Adress_Pynkta_vidachi" Relationship="ShoeStore__БихеModel.FK_Zakaz_Adress_Pynkta_vidachi" FromRole="Zakaz" ToRole="Adress_Pynkta_vidachi" />
+          <NavigationProperty Name="Sostav_zakaza" Relationship="ShoeStore__БихеModel.FK_Zakaz_Sostav_zakaza" FromRole="Zakaz" ToRole="Sostav_zakaza" />
+          <NavigationProperty Name="Status" Relationship="ShoeStore__БихеModel.FK_Zakaz_Status" FromRole="Zakaz" ToRole="Status" />
+          <NavigationProperty Name="User" Relationship="ShoeStore__БихеModel.FK_Zakaz_User" FromRole="Zakaz" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Pynkti_Adress_Pynkta_vidachi">
+          <End Type="ShoeStore__БихеModel.Adress_Pynkta_vidachi" Role="Adress_Pynkta_vidachi" Multiplicity="1" />
+          <End Type="ShoeStore__БихеModel.Pynkti" Role="Pynkti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress_Pynkta_vidachi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pynkti">
+              <PropertyRef Name="Adress_Pynkta_vidachiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_Adress_Pynkta_vidachi">
+          <End Type="ShoeStore__БихеModel.Adress_Pynkta_vidachi" Role="Adress_Pynkta_vidachi" Multiplicity="1" />
+          <End Type="ShoeStore__БихеModel.Zakaz" Role="Zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress_Pynkta_vidachi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Zakaz">
+              <PropertyRef Name="Adress_pyncta_vidachiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tovar_Kategory">
+          <End Type="ShoeStore__БихеModel.Kategory" Role="Kategory" Multiplicity="1" />
+          <End Type="ShoeStore__БихеModel.Tovar" Role="Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tovar_Postavshik">
+          <End Type="ShoeStore__БихеModel.Postavshik" Role="Postavshik" Multiplicity="1" />
+          <End Type="ShoeStore__БихеModel.Tovar" Role="Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavshik">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="PostavshikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tovar_Proizvod">
+          <End Type="ShoeStore__БихеModel.Proizvod" Role="Proizvod" Multiplicity="1" />
+          <End Type="ShoeStore__БихеModel.Tovar" Role="Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="ProizvodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Type="ShoeStore__БихеModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="ShoeStore__БихеModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SostavZakaza_Tovar">
+          <End Type="ShoeStore__БихеModel.Tovar" Role="Tovar" Multiplicity="0..1" />
+          <End Type="ShoeStore__БихеModel.Sostav_zakaza" Role="Sostav_zakaza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sostav_zakaza">
+              <PropertyRef Name="TovarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_Sostav_zakaza">
+          <End Type="ShoeStore__БихеModel.Sostav_zakaza" Role="Sostav_zakaza" Multiplicity="1" />
+          <End Type="ShoeStore__БихеModel.Zakaz" Role="Zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sostav_zakaza">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Zakaz">
+              <PropertyRef Name="Sostav_zakazaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_Status">
+          <End Type="ShoeStore__БихеModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="ShoeStore__БихеModel.Zakaz" Role="Zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Zakaz">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_User">
+          <End Type="ShoeStore__БихеModel.User" Role="User" Multiplicity="1" />
+          <End Type="ShoeStore__БихеModel.Zakaz" Role="Zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Zakaz">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ShoeStore__БихеModelContainer" CdmEntityContainer="ShoeStore_БихеEntities">
+          <EntitySetMapping Name="Adress_Pynkta_vidachi">
+            <EntityTypeMapping TypeName="ShoeStore__БихеModel.Adress_Pynkta_vidachi">
+              <MappingFragment StoreEntitySet="Adress Pynkta vidachi">
+                <ScalarProperty Name="Adress_Pynkta_vidachi1" ColumnName="Adress Pynkta vidachi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategory">
+            <EntityTypeMapping TypeName="ShoeStore__БихеModel.Kategory">
+              <MappingFragment StoreEntitySet="Kategory">
+                <ScalarProperty Name="Kategory1" ColumnName="Kategory" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postavshik">
+            <EntityTypeMapping TypeName="ShoeStore__БихеModel.Postavshik">
+              <MappingFragment StoreEntitySet="Postavshik">
+                <ScalarProperty Name="Postavshik1" ColumnName="Postavshik" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proizvod">
+            <EntityTypeMapping TypeName="ShoeStore__БихеModel.Proizvod">
+              <MappingFragment StoreEntitySet="Proizvod">
+                <ScalarProperty Name="Proizvod1" ColumnName="Proizvod" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pynkti">
+            <EntityTypeMapping TypeName="ShoeStore__БихеModel.Pynkti">
+              <MappingFragment StoreEntitySet="Pynkti">
+                <ScalarProperty Name="NomerZakaza" ColumnName="NomerZakaza" />
+                <ScalarProperty Name="Adress_Pynkta_vidachiId" ColumnName="Adress Pynkta vidachiId" />
+                <ScalarProperty Name="Gorod" ColumnName="Gorod" />
+                <ScalarProperty Name="NomerPynkta" ColumnName="NomerPynkta" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="ShoeStore__БихеModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sostav_zakaza">
+            <EntityTypeMapping TypeName="ShoeStore__БихеModel.Sostav_zakaza">
+              <MappingFragment StoreEntitySet="Sostav zakaza">
+                <ScalarProperty Name="TovarId" ColumnName="TovarId" />
+                <ScalarProperty Name="Nomer" ColumnName="Nomer" />
+                <ScalarProperty Name="ArticylZakaza" ColumnName="ArticylZakaza" />
+                <ScalarProperty Name="Nimer_zakaza" ColumnName="Nimer zakaza" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="ShoeStore__БихеModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Status1" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ShoeStore__БихеModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tovar">
+            <EntityTypeMapping TypeName="ShoeStore__БихеModel.Tovar">
+              <MappingFragment StoreEntitySet="Tovar">
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="OpisTovar" ColumnName="OpisTovar" />
+                <ScalarProperty Name="CountSklade" ColumnName="CountSklade" />
+                <ScalarProperty Name="Skidka" ColumnName="Skidka" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ProizvodId" ColumnName="ProizvodId" />
+                <ScalarProperty Name="PostavshikId" ColumnName="PostavshikId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="EdinichIzmeren" ColumnName="EdinichIzmeren" />
+                <ScalarProperty Name="TovarName" ColumnName="TovarName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="ShoeStore__БихеModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zakaz">
+            <EntityTypeMapping TypeName="ShoeStore__БихеModel.Zakaz">
+              <MappingFragment StoreEntitySet="Zakaz">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Adress_pyncta_vidachiId" ColumnName="Adress pyncta vidachiId" />
+                <ScalarProperty Name="Date_dostavca" ColumnName="Date dostavca" />
+                <ScalarProperty Name="Date_zakaz" ColumnName="Date zakaz" />
+                <ScalarProperty Name="Sostav_zakazaId" ColumnName="Sostav zakazaId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
